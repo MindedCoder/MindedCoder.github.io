@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="React Native," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="随着移动互联网的飞速推进，APP的更新速度也是越来越快，频繁的让用户去下载新包去更新这种方式，用户是很难接受的。  我们为什么要做热更新 应用商店的审核周期过长 用户频繁下载APP更新的成本太高 可以更加及时的修复bug 新版本有问题可以随时回滚">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Native热更新">
+<meta property="og:url" content="http:&#x2F;&#x2F;hcoder.cn&#x2F;2016&#x2F;11&#x2F;08&#x2F;hotUpdate&#x2F;index.html">
+<meta property="og:site_name" content="北风&#39;s blog">
+<meta property="og:description" content="随着移动互联网的飞速推进，APP的更新速度也是越来越快，频繁的让用户去下载新包去更新这种方式，用户是很难接受的。  我们为什么要做热更新 应用商店的审核周期过长 用户频繁下载APP更新的成本太高 可以更加及时的修复bug 新版本有问题可以随时回滚">
+<meta property="og:image" content="http:&#x2F;&#x2F;csgame-chats.oss-cn-shenzhen.aliyuncs.com&#x2F;test&#x2F;import.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;csgame-chats.oss-cn-shenzhen.aliyuncs.com&#x2F;test&#x2F;import1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;csgame-chats.oss-cn-shenzhen.aliyuncs.com&#x2F;test&#x2F;import2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;csgame-chats.oss-cn-shenzhen.aliyuncs.com&#x2F;test&#x2F;import4.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;csgame-chats.oss-cn-shenzhen.aliyuncs.com&#x2F;test&#x2F;import5.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;csgame-chats.oss-cn-shenzhen.aliyuncs.com&#x2F;test&#x2F;import6.png">
+<meta property="article:published_time" content="2016-11-08T02:26:08.000Z">
+<meta property="article:modified_time" content="2019-12-11T01:37:44.852Z">
+<meta property="article:author" content="hcoder.cn">
+<meta property="article:tag" content="React Native">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;csgame-chats.oss-cn-shenzhen.aliyuncs.com&#x2F;test&#x2F;import.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://hcoder.cn/2016/11/08/hotUpdate/"/>
+
+
+
+
+
+  <title>React Native热更新 | 北风's blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.1.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">北风's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">爱汽车 爱音乐 爱你 就是不爱写代码</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hcoder.cn/2016/11/08/hotUpdate/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hcoder.cn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://csgame-chats.oss-cn-shenzhen.aliyuncs.com/test/IMG_6215.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="北风's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">React Native热更新</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-08T10:26:08+08:00">
+                2016-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/11/08/hotUpdate/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2016/11/08/hotUpdate/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>随着移动互联网的飞速推进，APP的更新速度也是越来越快，频繁的让用户去下载新包去更新这种方式，用户是很难接受的。</p>
+</blockquote>
+<h5 id="我们为什么要做热更新"><a href="#我们为什么要做热更新" class="headerlink" title="我们为什么要做热更新"></a>我们为什么要做热更新</h5><ol>
+<li>应用商店的审核周期过长</li>
+<li>用户频繁下载APP更新的成本太高</li>
+<li>可以更加及时的修复bug</li>
+<li>新版本有问题可以随时回滚</li>
+</ol>
+<a id="more"></a>
+
+<h5 id="当前用用户较多的平台"><a href="#当前用用户较多的平台" class="headerlink" title="当前用用户较多的平台"></a>当前用用户较多的平台</h5><h6 id="国内："><a href="#国内：" class="headerlink" title="国内："></a>国内：</h6><p><a href="https://github.com/reactnativecn/react-native-pushy" target="_blank" rel="noopener">react-native-pushy</a></p>
+<p>这是reactNative中文网推出的代码热更新服务，可以单独使用本组件的原生部分(不包括js模块)和命令行工具中的bundle、diff、diffFromIpa、diffFromApk四个功能。 这些功能都不会使用对方的热更新服务，也无需注册或登录账号。但你可能要编写自己的js模块来与不同的热更新服务器通讯。</p>
+<p>目前对方的热更新服务完全免费，但限制每个账号不超过3个应用；每个应用不超过10个活跃的包和100个活跃的热更新版本；每个应用每个月不超过10000次下载。iOS和Android版本记 做不同的应用。已经移除的应用、包版本、热更新版本不在统计之列，所以你可以移除测 试时产生的和已过期版本来更有效的利用空间。</p>
+<p>支持崩溃回滚和增量更新，有命令行工具与网页端双管理</p>
+<h6 id="国外："><a href="#国外：" class="headerlink" title="国外："></a>国外：</h6><p><a href="https://github.com/AppHubPlatform/apphub" target="_blank" rel="noopener">AppHub</a></p>
+<p>有官方的后端维护平台，也可以自己配置自己的平台。在对方的介绍里面没有看到增量更新，日活1000以内收费，局限性大</p>
+<p><a href="https://github.com/aerofs/react-native-auto-updater" target="_blank" rel="noopener">react-native-auto-updater</a></p>
+<p>只能全量更新，而且只能js更新，不支持下载更新，还得自己配置好服务端。而且已经停止更新了，对方建议用react-native-code-push</p>
+<p><a href="https://github.com/Microsoft/react-native-code-push" target="_blank" rel="noopener">react-native-code-push</a></p>
+<p>这是微软来维护的一套热更新框架。有丰富的文档，功能很详细。服务端在国外，可能会由于网络问题影响我们的覆盖率。平台服务端不开源，故不能使用我们自己的服务端。发现codePush的增量更新是一个伪增量更新，他们只针对资源文件增量了，涉及到bundle还是整个替换的。可人家是完全免费的</p>
+<p>使用别人家的平台还得冒着代码泄露的风险，还有停止更新乃至垮台的风险，以及网络、增量、灰度、回滚、等问题导致我们不去选择别人的平台，所以自己动手吧。</p>
+<h5 id="说说我们的做法"><a href="#说说我们的做法" class="headerlink" title="说说我们的做法"></a>说说我们的做法</h5><h6 id="总体"><a href="#总体" class="headerlink" title="总体"></a>总体</h6><p><img src="http://csgame-chats.oss-cn-shenzhen.aliyuncs.com/test/import.png" alt=""></p>
+<p>总体来说，完成一次热更新的过程如上图所示，当我们在后台配置一次更新版本后，用户打开app进入首页时会主动调一次更新版本的接口，传的参数是原生APP版本以及bundle版本以及用户信息。</p>
+<p>服务端根据传过来的APP版本，bundle版本以及用户信息判断是否有更新版本，若有，返回版本信息，若没有，返回没有。</p>
+<p>客户端在收到服务端的返回后，若没有更新则什么都不做，若有更新就下载更新文件，后面合并资源文件以及替换掉原来的bundle后，下一次启动就是最新的版本。</p>
+<h6 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h6><p><img src="http://csgame-chats.oss-cn-shenzhen.aliyuncs.com/test/import1.png" alt=""></p>
+<p>更新那就肯定离不开服务了，先来看看表结构：</p>
+<p><img src="http://csgame-chats.oss-cn-shenzhen.aliyuncs.com/test/import2.png" alt=""></p>
+<p>每一次发热更新版本都会对应着一条或者多条记录，当用户携带原声版本,bundle版本以及用户信息过来的时候都回去数据库匹配条目，假设用户的版本为APPV1.0,bundleV1.0,那么正好对应着图上的这一条记录。之后再看是否为灰度发布，<br>若该版本配置的为灰度发布，那么去看此用户是否为灰度用户里面一员，是则往下走，否则返回没有可更新版本。</p>
+<p>若非灰度发布，或者为灰度发布中一员，则返回这条数据的信息给APP。<br>当APP收到可以更新的版本信息后，会查看是否静默更新，若是静默更新则直接下载后合成替换，等待下一次启动启用。<br>若非静默更新，则立即弹出是否更新界面。用户点击立即更新在WiFi条件下就会立即下载然后合成替换，等待下一次启动启用。<br>若在4G条件下还得再次确认使用流量。</p>
+<h6 id="原生端"><a href="#原生端" class="headerlink" title="原生端"></a>原生端</h6><p><img src="http://csgame-chats.oss-cn-shenzhen.aliyuncs.com/test/import4.png" alt=""></p>
+<p>这里得详细描述一下，第一步我还是po一个APP下面的文件目录结构图吧！以iOS为例，安卓思想一样。</p>
+<p><img src="http://csgame-chats.oss-cn-shenzhen.aliyuncs.com/test/import5.png" alt=""></p>
+<p>首先我们根据从服务器获取到的更新包地址，把包下载在tmp/jstmp/下面，有可能是bundle.zip或者是patch.zip。<br>然后通过服务器返回的MD5值对比这个下载包的MD5值，不对即被篡改，停止更新<br>再根据是否全量更新来判断走哪个方式</p>
+<p><strong>增量更新</strong></p>
+<p>第一步我们得把library/bundle下面的当前版本copy一份到history下面，以防后面需要回滚。文件夹的名字参考config.json里面的bundle版本字段。<br>第二步解压patch.zip，得到bundle.diff，config.json，如果有图片修改可能就还有assets文件夹。<br>第三步拿assets文件夹去覆盖当前使用的assets文件夹，合并图片<br>第四步拿tmp/jstmp下面的bundle.diff文件与bundle/index.ios.jsbundle合成<br>第五步删除library/bundle/下面的index.ios.jsbundle 和config.json<br>第六步把tmp/jstmp下面的config.json移动至bundle下面，把刚刚合成的data写入bundle下面名为index.ios.jsbundle<br>最后我们再清除tmp</p>
+<p><strong>全量更新</strong></p>
+<p>全量更新就简单很多了<br>第一步和增量更新一样copy为历史版本<br>第二步也一样解压<br>第三步还是一样合成assets文件夹<br>第四步删除library/bundle/下面的index.ios.jsbundle 和config.json<br>第五步把tmp/jstmp下面的config.json和index.ios.jsbundle移动至bundle下面<br>最后清除tmp</p>
+<h6 id="怎么打包"><a href="#怎么打包" class="headerlink" title="怎么打包"></a>怎么打包</h6><p>在谈打包之前我们得先看看jsbundle是怎么被运行的</p>
+<p>ReactNative程序分为三部分:native源码，js源码，以及图片资源<br><del>//不论iOS或者安卓 程序的入口一定是在原生的main函数之中，</del><br>嗯、首先我们得有初始化包，即第一个版本。<br>第一步构建我们的index.ios.jsbundle。<br>在项目根目录下执行<br><strong>ios</strong>:<code>react-native bundle --entry-file index.ios.js --bundle-output ./ios/bundle/index.ios.jsbundle --platform ios --assets-dest ./ios/bundle --dev false</code></p>
+<p><strong>android</strong>:<code>react-native bundle --entry-file index.android.js --bundle-output ./android/app/src/main/assets/index.android.jsbundle --platform android --assets-dest ./android/app/src/main/res/ --dev false</code></p>
+<p>这个时候我们会得到bundle文件和图片资源文件夹，然后我们再编辑一盒config.json文件来描述这个包。比如这样：</p>
+<p><img src="http://csgame-chats.oss-cn-shenzhen.aliyuncs.com/test/import6.png" alt=""></p>
+<p>最后我们把这三种文件打包成bundle.zip放入文件目录中，再打出apk或者ipa包供用户下载。说到这里有人就会问了，那怎么去访问呢，关键时候到了，往下走去看看原生代码。</p>
+<p>每次当程序启动的时候都回去创建文件目录，即上图中的文件目录。若不存在目录则直接去创建，并且把代码目录里面放入的压缩包解压到library/bundle下面。<br>若存在目录还要注意一种情况就是APP在更新原生版本的时候之前的数据会被保留下来的，所以我们的先判断config.json里面的原生版本与当前原声版本对应的起来是否，否则就要删掉文档目录重新从代码目录的zip解压过来。</p>
+<p>最后代码访问library/bundle下面的资源即可</p>
+<h6 id="未来值得去做的："><a href="#未来值得去做的：" class="headerlink" title="未来值得去做的："></a>未来值得去做的：</h6><p>1、崩溃回滚<br>2、用户灰度分类<br>3、更新覆盖率<br>4、版本统计<br>5、推送更新<br>6、平台化<br>7、安全性研究<br>8、<strong>值得一提的是biff的风险性</strong>  </p>
+<p>**</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.png" alt="hcoder.cn 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="hcoder.cn 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    hcoder.cn
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://hcoder.cn/2016/11/08/hotUpdate/" title="React Native热更新">http://hcoder.cn/2016/11/08/hotUpdate/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React-Native/" rel="tag"># React Native</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/15/objc_runtime/" rel="next" title="objective-c runtime机制">
+                <i class="fa fa-chevron-left"></i> objective-c runtime机制
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/11/nativeBridge/" rel="prev" title="React Native与原生的通信">
+                React Native与原生的通信 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://csgame-chats.oss-cn-shenzhen.aliyuncs.com/test/IMG_6215.JPG"
+                alt="hcoder.cn" />
+            
+              <p class="site-author-name" itemprop="name">hcoder.cn</p>
+              <p class="site-description motion-element" itemprop="description">分享快乐 ~ 关注我的网易云音乐👇</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/MindedCoder" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:hcoder@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://baidu.com/" title="Baidu" target="_blank">Baidu</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://google.com/" title="Google" target="_blank">Google</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1376584760&auto=1&height=66"></iframe>
+          
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#我们为什么要做热更新"><span class="nav-number">1.</span> <span class="nav-text">我们为什么要做热更新</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#当前用用户较多的平台"><span class="nav-number">2.</span> <span class="nav-text">当前用用户较多的平台</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#国内："><span class="nav-number">2.1.</span> <span class="nav-text">国内：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#国外："><span class="nav-number">2.2.</span> <span class="nav-text">国外：</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#说说我们的做法"><span class="nav-number">3.</span> <span class="nav-text">说说我们的做法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#总体"><span class="nav-number">3.1.</span> <span class="nav-text">总体</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#接口"><span class="nav-number">3.2.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#原生端"><span class="nav-number">3.3.</span> <span class="nav-text">原生端</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#怎么打包"><span class="nav-number">3.4.</span> <span class="nav-text">怎么打包</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#未来值得去做的："><span class="nav-number">3.5.</span> <span class="nav-text">未来值得去做的：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hcoder.cn</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'Go2K8489IBTGwHDHKJ4Gj7iD-gzGzoHsz',
+        appKey: 'oEET6zafqodQpIwN5NEwDkel',
+        placeholder: '说点什么吧',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

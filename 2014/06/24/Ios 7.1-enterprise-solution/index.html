@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="生活," />
+  <meta name="keywords" content="IOS," />
 
 
 
@@ -79,17 +79,33 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp;还记得第一次写博客的由来，那是一次偶然发现了隔壁寝室的老王同学正在研究Git与博客，因为老王在我们班上算是top tree那种级别，所以身为菜鸡的我，必然要跟着老王的脚步，于是自己也去研究了这些东西，开始了第一趟惨不忍睹的博客之旅。(老王去了阿里巴巴定居在杭州了)">
+<meta name="description" content="背景 前些时间iOS7.1正式发布。这次发布的系统，对于所有iOS企业开发人员来说是个很不好的消息，原来的发布是通过HTTP方式，而现在7.1以后是通过https了。苹果的官方并没有说明这次变化。但是我们测试时确实遇到了这样的问题 ，这就导致企业级发布变得麻烦起来。我通过Xcode的Organizer查看IOS7.1以上设备上的控制台，打印出了如下信息：Could not load non-htt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Blog回归">
-<meta property="og:url" content="http:&#x2F;&#x2F;hcoder.cn&#x2F;2019&#x2F;12&#x2F;10&#x2F;back&#x2F;index.html">
+<meta property="og:title" content="IOS企业级开发APP分发问题">
+<meta property="og:url" content="http:&#x2F;&#x2F;hcoder.cn&#x2F;2014&#x2F;06&#x2F;24&#x2F;Ios%207.1-enterprise-solution&#x2F;index.html">
 <meta property="og:site_name" content="北风&#39;s blog">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;还记得第一次写博客的由来，那是一次偶然发现了隔壁寝室的老王同学正在研究Git与博客，因为老王在我们班上算是top tree那种级别，所以身为菜鸡的我，必然要跟着老王的脚步，于是自己也去研究了这些东西，开始了第一趟惨不忍睹的博客之旅。(老王去了阿里巴巴定居在杭州了)">
-<meta property="article:published_time" content="2019-12-10T08:36:28.000Z">
-<meta property="article:modified_time" content="2019-12-11T02:24:59.478Z">
+<meta property="og:description" content="背景 前些时间iOS7.1正式发布。这次发布的系统，对于所有iOS企业开发人员来说是个很不好的消息，原来的发布是通过HTTP方式，而现在7.1以后是通过https了。苹果的官方并没有说明这次变化。但是我们测试时确实遇到了这样的问题 ，这就导致企业级发布变得麻烦起来。我通过Xcode的Organizer查看IOS7.1以上设备上的控制台，打印出了如下信息：Could not load non-htt">
+<meta property="og:image" content="http:&#x2F;&#x2F;hcoder.cn&#x2F;images&#x2F;developForIOS&#x2F;IOS7.1_1&#x2F;20140716155637983.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;hcoder.cn&#x2F;images&#x2F;developForIOS&#x2F;IOS7.1_1&#x2F;20140716155431687.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;hcoder.cn&#x2F;images&#x2F;developForIOS&#x2F;IOS7.1_1&#x2F;20140716155716842.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;hcoder.cn&#x2F;images&#x2F;developForIOS&#x2F;IOS7.1_1&#x2F;20140716155457375.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;hcoder.cn&#x2F;images&#x2F;developForIOS&#x2F;IOS7.1_1&#x2F;20140716155756997.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;hcoder.cn&#x2F;images&#x2F;developForIOS&#x2F;IOS7.1_1&#x2F;20140716155849569.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;hcoder.cn&#x2F;images&#x2F;developForIOS&#x2F;IOS7.1_1&#x2F;20140716160012717.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;hcoder.cn&#x2F;images&#x2F;developForIOS&#x2F;IOS7.1_1&#x2F;20140716155814562.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;hcoder.cn&#x2F;images&#x2F;developForIOS&#x2F;IOS7.1_1&#x2F;20140716160121217.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;hcoder.cn&#x2F;images&#x2F;developForIOS&#x2F;IOS7.1_1&#x2F;20140716160138970.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;hcoder.cn&#x2F;images&#x2F;developForIOS&#x2F;IOS7.1_1&#x2F;20140716160214070.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;hcoder.cn&#x2F;images&#x2F;developForIOS&#x2F;IOS7.1_1&#x2F;20140716160004609.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;hcoder.cn&#x2F;images&#x2F;developForIOS&#x2F;IOS7.1_1&#x2F;20140716160306782.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;hcoder.cn&#x2F;images&#x2F;developForIOS&#x2F;IOS7.1_1&#x2F;20140716160504469.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;hcoder.cn&#x2F;images&#x2F;developForIOS&#x2F;IOS7.1_1&#x2F;20140716160533735.png">
+<meta property="article:published_time" content="2014-06-24T02:18:31.000Z">
+<meta property="article:modified_time" content="2019-12-11T02:12:20.546Z">
 <meta property="article:author" content="hcoder.cn">
-<meta property="article:tag" content="生活">
+<meta property="article:tag" content="IOS">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;hcoder.cn&#x2F;images&#x2F;developForIOS&#x2F;IOS7.1_1&#x2F;20140716155637983.png">
 
 
 
@@ -119,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://hcoder.cn/2019/12/10/back/"/>
+  <link rel="canonical" href="http://hcoder.cn/2014/06/24/Ios 7.1-enterprise-solution/"/>
 
 
 
 
 
-  <title>Blog回归 | 北风's blog</title>
+  <title>IOS企业级开发APP分发问题 | 北风's blog</title>
   
 
 
@@ -252,7 +268,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://hcoder.cn/2019/12/10/back/">
+    <link itemprop="mainEntityOfPage" href="http://hcoder.cn/2014/06/24/Ios%207.1-enterprise-solution/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hcoder.cn">
@@ -269,7 +285,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Blog回归</h1>
+          <h1 class="post-title" itemprop="name headline">IOS企业级开发APP分发问题</h1>
         
 
         <div class="post-meta">
@@ -281,8 +297,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-10T16:36:28+08:00">
-                2019-12-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-06-24T10:18:31+08:00">
+                2014-06-24
               </time>
             
 
@@ -300,8 +316,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/12/10/back/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/12/10/back/" itemprop="commentCount"></span>
+                <a href="/2014/06/24/Ios%207.1-enterprise-solution/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2014/06/24/Ios%207.1-enterprise-solution/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -329,12 +345,40 @@
       
 
       
-        <p>  &emsp;&emsp;还记得第一次写博客的由来，那是一次偶然发现了隔壁寝室的老王同学正在研究Git与博客，因为老王在我们班上算是top tree那种级别，所以身为菜鸡的我，必然要跟着老王的脚步，于是自己也去研究了这些东西，开始了第一趟惨不忍睹的博客之旅。(老王去了阿里巴巴定居在杭州了)</p>
+        <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><blockquote>
+<p>前些时间iOS7.1正式发布。这次发布的系统，对于所有iOS企业开发人员来说是个很不好的消息，<br>原来的发布是通过HTTP方式，而现在7.1以后是通过https了。苹果的官方并没有说明这次变化。但是<br>我们测试时确实遇到了这样的问题 ，这就导致企业级发布变得麻烦起来。我通过Xcode的Organizer查<br>看IOS7.1以上设备上的控制台，打印出了如下信息：Could not load non-https manifest URL:<br><a href="http://11.11.11.11/xxx.plist,苹果已经在7.1中禁止了“非HTTPS”方式的" target="_blank" rel="noopener">http://11.11.11.11/xxx.plist,苹果已经在7.1中禁止了“非HTTPS”方式的</a> manifest URL。 所以我<br>们得将上面的URL改成<a href="https://11.11.11.11/xxx.plist才可以。" target="_blank" rel="noopener">https://11.11.11.11/xxx.plist才可以。</a></p>
+</blockquote>
 <a id="more"></a>
 
-<p>  &emsp;&emsp;之前一直用的jekyll,不知道为啥丧失了写博客的乐趣，最近想捡起来写博客的习惯，不管是记录生活 或者是工作中遇到的难题，或者研究的可以与大家分享的东西。于是写博客的念头如泉水般<br>，一刻也不能等，于是最后选择了hexo这个比较轻量、也很容易上手的框架，能让我把更多精力放在写博客上面。</p>
-<p>  &emsp;&emsp;前期会花一些时间来把以前的博客中的几篇（还有十几篇太烂了就算了）整理到这个上面来，虽然写的不咋样，但是也是一些过往的记忆，就当做存档吧，还望大家不要笑话。</p>
-<p>  &emsp;&emsp; 还有可能分享一些说唱音乐或者民谣，毕竟我本人特喜欢。欢迎大神来指导交流</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>1、通过dropbox发布plist文件，百度随便都能找到很多片技术文章。这里不讲。（dropbox经常被封，用着不爽）</p>
+<p>2、自己配HTTPS服务器。此方式百度也能找到很大一堆技术文章，但是技术难度大。要花很多时间，这里不讲。</p>
+<p>3、把plist文件放在国内一家基于https网站上，（此方法是我在谷歌上搜很久才搜到的）他就是开源中国<br>（<a href="http://git.oschina.net）。国内大型网站，无被封可能，好用又免费。下面就讲这种方式。" target="_blank" rel="noopener">http://git.oschina.net）。国内大型网站，无被封可能，好用又免费。下面就讲这种方式。</a></p>
+<p>发布之前，必须先得到两个东西。<br>1、<strong>Xxx.ipa</strong><br>2、<strong>Xxx.plist</strong></p>
+<p>(1)  .ipa文件就是IOS设备的安装包，.plist 是对.ipa 文件的描叙 包括地址等信息</p>
+<p>具体生成过程如下：</p>
+<p>①如图点击Product—Scheme—editScheme</p>
+<p><a href="/images/developForIOS/IOS7.1_1/20140716155637983.png"><img src="/images/developForIOS/IOS7.1_1/20140716155637983.png" alt=""></a></p>
+<p>② 如图  选择Archive   右边Build Configuration 选择Release 点击OK<br><a href="/images/developForIOS/IOS7.1_1/20140716155431687.png"><img src="/images/developForIOS/IOS7.1_1/20140716155431687.png" alt=""></a></p>
+<p>③ 如图点击product—archive<br><a href="/images/developForIOS/IOS7.1_1/20140716155716842.png"><img src="/images/developForIOS/IOS7.1_1/20140716155716842.png" alt=""></a></p>
+<p>④这时会出现如下窗口，我们点击distributiont<br><a href="/images/developForIOS/IOS7.1_1/20140716155457375.png"><img src="/images/developForIOS/IOS7.1_1/20140716155457375.png" alt=""></a></p>
+<p>⑤选择中间的 savefor enterprise or ad-hoc deployment，点击Next<br><a href="/images/developForIOS/IOS7.1_1/20140716155756997.png"><img src="/images/developForIOS/IOS7.1_1/20140716155756997.png" alt=""></a></p>
+<p>⑥选择当前项目的发布证书  点击Export<br><a href="/images/developForIOS/IOS7.1_1/20140716155849569.png"><img src="/images/developForIOS/IOS7.1_1/20140716155849569.png" alt=""></a></p>
+<p>⑦勾上 Save ForEnterprise Distribution，Application URL 填上我生成的.iPa文件放进服务器的路径，下面的空随意填。点击save。<br><a href="/images/developForIOS/IOS7.1_1/20140716160012717.png"><img src="/images/developForIOS/IOS7.1_1/20140716160012717.png" alt=""></a></p>
+<p>这时你就能在桌面上看到.plist和.ipa 两个文件<br><a href="/images/developForIOS/IOS7.1_1/20140716155814562.png"><img src="/images/developForIOS/IOS7.1_1/20140716155814562.png" alt=""></a></p>
+<p>(2)  在这里我们已经得到了.ipa 和.plist 文件 下面我们要做的是把.ipa 放进我们自己的服务器，把.plist放进开源中国的服务器。</p>
+<p>① .ipa 直接可以放入我们自己项目的目录下面  ，我们只需要一个访问地址就行了，比如上面生成plist文件时用的<a href="http://11.11.11.11/Westom/file/xxx.ipa" target="_blank" rel="noopener">http://11.11.11.11/Westom/file/xxx.ipa</a>  plist文件里面的路径就是这个。</p>
+<p>②下一步就是把plist文件放入开源中国（<a href="http://git.oschina.net）。首先在开源中国注册一个账号。登陆之后点击创建项目，出现如下界面；" target="_blank" rel="noopener">http://git.oschina.net）。首先在开源中国注册一个账号。登陆之后点击创建项目，出现如下界面；</a><br><a href="/images/developForIOS/IOS7.1_1/20140716160121217.png"><img src="/images/developForIOS/IOS7.1_1/20140716160121217.png" alt=""></a></p>
+<p>③  项目名称按项目填，<font color="red">千万不要选择私有项目不然访问不了</font>，勾上使用Readme.md其他随意填，点击创建项目。完成后出现如下界面：<br><a href="/images/developForIOS/IOS7.1_1/20140716160138970.png"><img src="/images/developForIOS/IOS7.1_1/20140716160138970.png" alt=""></a></p>
+<p>④ 点击+号 如下图输入框填入plist文件名字（注意要有后缀名.plist）。把生成的plist文件用记事本打开，拷贝里面的东西粘贴到下面的文本域其中有一个地址这个地址就是我们.ipa 放入自己服务器的地址（放进浏览器必须要能访问到的）。点击提交。<br><a href="/images/developForIOS/IOS7.1_1/20140716160214070.png"><img src="/images/developForIOS/IOS7.1_1/20140716160214070.png" alt=""></a></p>
+<p>⑤如下图点击xxx.plist<br><a href="/images/developForIOS/IOS7.1_1/20140716160004609.png"><img src="/images/developForIOS/IOS7.1_1/20140716160004609.png" alt=""></a></p>
+<p>⑤如下图点击原始数据<br><a href="/images/developForIOS/IOS7.1_1/20140716160306782.png"><img src="/images/developForIOS/IOS7.1_1/20140716160306782.png" alt=""></a></p>
+<p>⑦ 出现如图所示的界面<br><a href="/images/developForIOS/IOS7.1_1/20140716160504469.png"><img src="/images/developForIOS/IOS7.1_1/20140716160504469.png" alt=""></a></p>
+<p>浏览器中的地址就是我们需要的在前面加上https://<br>有HTTP的只要加上s就行了（注意plist文件是必须要放在https服务器上面的，ipa文件没要求）<br>这时我们就得到了plist文件的地址：<a href="https://git.oschina.net/_huangcan/dddd/raw/master/xxx.plist" target="_blank" rel="noopener">https://git.oschina.net/_huangcan/dddd/raw/master/xxx.plist</a><br>复制下来放入浏览器检验是否能访问到。</p>
+<p>⑧这也是很重要的一步 在⑦的到底地址前面加上itms-services://?action=download-manifest&amp;url=</p>
+<p>之后就得到完整的访问地址itms-services://?action=download-manifest&amp;url=<a href="https://git.oschina.net/_huangcan/dddd/raw/master/xxx.plist" target="_blank" rel="noopener">https://git.oschina.net/_huangcan/dddd/raw/master/xxx.plist</a></p>
+<p>然后把这个链接放到我们服务器的HTML网页上供用户点击<br><a href="/images/developForIOS/IOS7.1_1/20140716160533735.png"><img src="/images/developForIOS/IOS7.1_1/20140716160533735.png" alt=""></a></p>
+<p>到此 就结束了。(文采不好，不周到之处还请见谅)</p>
+<p>文中涉及到开发证书，发布证书，开发者账号问题，请浏览我的下篇文章</p>
 
       
     </div>
@@ -384,7 +428,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://hcoder.cn/2019/12/10/back/" title="Blog回归">http://hcoder.cn/2019/12/10/back/</a>
+    <a href="http://hcoder.cn/2014/06/24/Ios%207.1-enterprise-solution/" title="IOS企业级开发APP分发问题">http://hcoder.cn/2014/06/24/Ios%207.1-enterprise-solution/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -399,7 +443,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag"># 生活</a>
+            <a href="/tags/IOS/" rel="tag"># IOS</a>
           
         </div>
       
@@ -412,15 +456,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/11/nativeBridge/" rel="next" title="React Native与原生的通信">
-                <i class="fa fa-chevron-left"></i> React Native与原生的通信
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/06/30/Ios%207.1-enterprise-solution(2)/" rel="prev" title="IOS企业级开发APP分发问题（2）">
+                IOS企业级开发APP分发问题（2） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -475,8 +519,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -564,6 +617,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案"><span class="nav-number">2.</span> <span class="nav-text">解决方案</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

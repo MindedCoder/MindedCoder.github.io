@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="生活," />
+  <meta name="keywords" content="IOS," />
 
 
 
@@ -79,16 +79,16 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp;还记得第一次写博客的由来，那是一次偶然发现了隔壁寝室的老王同学正在研究Git与博客，因为老王在我们班上算是top tree那种级别，所以身为菜鸡的我，必然要跟着老王的脚步，于是自己也去研究了这些东西，开始了第一趟惨不忍睹的博客之旅。(老王去了阿里巴巴定居在杭州了)">
+<meta name="description" content="方案（一）已经介绍了如何用别人的https服务器来实现OTA下载，主要是把自己的plist文件放进别人的https服务器上，把IPA文件放进自己的服务器。在plist文件内把链接指向自己的IPA地址就行了。具体操作请看方案（一）。   本文档主要是介绍怎么样配置自己的https服务器然后自己把plist文件放进你自己的服务器，不用依赖别人。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Blog回归">
-<meta property="og:url" content="http:&#x2F;&#x2F;hcoder.cn&#x2F;2019&#x2F;12&#x2F;10&#x2F;back&#x2F;index.html">
+<meta property="og:title" content="IOS企业级开发APP分发问题（2）">
+<meta property="og:url" content="http:&#x2F;&#x2F;hcoder.cn&#x2F;2014&#x2F;06&#x2F;30&#x2F;Ios%207.1-enterprise-solution(2)&#x2F;index.html">
 <meta property="og:site_name" content="北风&#39;s blog">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;还记得第一次写博客的由来，那是一次偶然发现了隔壁寝室的老王同学正在研究Git与博客，因为老王在我们班上算是top tree那种级别，所以身为菜鸡的我，必然要跟着老王的脚步，于是自己也去研究了这些东西，开始了第一趟惨不忍睹的博客之旅。(老王去了阿里巴巴定居在杭州了)">
-<meta property="article:published_time" content="2019-12-10T08:36:28.000Z">
-<meta property="article:modified_time" content="2019-12-11T02:24:59.478Z">
+<meta property="og:description" content="方案（一）已经介绍了如何用别人的https服务器来实现OTA下载，主要是把自己的plist文件放进别人的https服务器上，把IPA文件放进自己的服务器。在plist文件内把链接指向自己的IPA地址就行了。具体操作请看方案（一）。   本文档主要是介绍怎么样配置自己的https服务器然后自己把plist文件放进你自己的服务器，不用依赖别人。">
+<meta property="article:published_time" content="2014-06-30T06:08:11.000Z">
+<meta property="article:modified_time" content="2019-12-11T02:09:51.416Z">
 <meta property="article:author" content="hcoder.cn">
-<meta property="article:tag" content="生活">
+<meta property="article:tag" content="IOS">
 <meta name="twitter:card" content="summary">
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://hcoder.cn/2019/12/10/back/"/>
+  <link rel="canonical" href="http://hcoder.cn/2014/06/30/Ios 7.1-enterprise-solution(2)/"/>
 
 
 
 
 
-  <title>Blog回归 | 北风's blog</title>
+  <title>IOS企业级开发APP分发问题（2） | 北风's blog</title>
   
 
 
@@ -252,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://hcoder.cn/2019/12/10/back/">
+    <link itemprop="mainEntityOfPage" href="http://hcoder.cn/2014/06/30/Ios%207.1-enterprise-solution(2)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hcoder.cn">
@@ -269,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Blog回归</h1>
+          <h1 class="post-title" itemprop="name headline">IOS企业级开发APP分发问题（2）</h1>
         
 
         <div class="post-meta">
@@ -281,8 +281,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-10T16:36:28+08:00">
-                2019-12-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-06-30T14:08:11+08:00">
+                2014-06-30
               </time>
             
 
@@ -300,8 +300,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/12/10/back/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/12/10/back/" itemprop="commentCount"></span>
+                <a href="/2014/06/30/Ios%207.1-enterprise-solution(2)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2014/06/30/Ios%207.1-enterprise-solution(2)/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -329,12 +329,50 @@
       
 
       
-        <p>  &emsp;&emsp;还记得第一次写博客的由来，那是一次偶然发现了隔壁寝室的老王同学正在研究Git与博客，因为老王在我们班上算是top tree那种级别，所以身为菜鸡的我，必然要跟着老王的脚步，于是自己也去研究了这些东西，开始了第一趟惨不忍睹的博客之旅。(老王去了阿里巴巴定居在杭州了)</p>
+        <blockquote>
+<p>方案（一）已经介绍了如何用别人的https服务器来实现OTA下载，主要是把自己的plist文件放进别人的https服务器上，把IPA文件放进自己的服务器。在plist文件内把链接指向自己的IPA地址就行了。具体操作请看方案（一）。</p>
+</blockquote>
+<blockquote>
+<p>本文档主要是介绍怎么样配置自己的https服务器然后自己把plist文件放进你自己的服务器，不用依赖别人。</p>
+</blockquote>
 <a id="more"></a>
 
-<p>  &emsp;&emsp;之前一直用的jekyll,不知道为啥丧失了写博客的乐趣，最近想捡起来写博客的习惯，不管是记录生活 或者是工作中遇到的难题，或者研究的可以与大家分享的东西。于是写博客的念头如泉水般<br>，一刻也不能等，于是最后选择了hexo这个比较轻量、也很容易上手的框架，能让我把更多精力放在写博客上面。</p>
-<p>  &emsp;&emsp;前期会花一些时间来把以前的博客中的几篇（还有十几篇太烂了就算了）整理到这个上面来，虽然写的不咋样，但是也是一些过往的记忆，就当做存档吧，还望大家不要笑话。</p>
-<p>  &emsp;&emsp; 还有可能分享一些说唱音乐或者民谣，毕竟我本人特喜欢。欢迎大神来指导交流</p>
+<h4 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h4><blockquote>
+<ul>
+<li>①、 平台：windows7+tomcat6+jdk1.8</li>
+<li>②、 首先启动tomcat测试下能否访问<a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a> 能 继续，不能 重装</li>
+<li>③、安装vcredist_x86和OpenSSL(我安装到C:\OpenSSL)</li>
+</ul>
+</blockquote>
+<h4 id="制作所需要的证书"><a href="#制作所需要的证书" class="headerlink" title="制作所需要的证书"></a>制作所需要的证书</h4><pre><code>首先创建一个文件夹来存储得到的证书：我在C盘下面创建了一个CA文件夹 （C:\CA）</code></pre><p>①、打开CMD,命令 cd c:\openssl\bin, 转到bin目录下</p>
+<pre><code>创建制作根证书的私钥文件文件名为MyCa:  
+openssl genrsa -out C:\CA\MyCa.key 2048</code></pre><p>②、然后创建根证书 名字为MyCa.cer,机构名称为CustomCA:</p>
+<pre><code>openssl req -x509 -new -key C:\CA\MyCa.key -out C:\C\MyCa.cer -days 730 -subj /CN=&quot;CustomCA&quot;</code></pre><p>③、制作SSL证书，首先创建一个私钥</p>
+<pre><code>openssl genrsa -out C:\CA\MyServer.key  2048</code></pre><p>私钥文件名为MyServer.key。</p>
+<p>④、然后创建CSR:</p>
+<pre><code>openssl req -new -out C:\CA\MyServer.req  -key C:\CA\MyServer.key -subj /CN=192.1.1.1/CN=192.1.1.1/CN=localhost</code></pre><p>根据自己的iP来填  都填一样算了    至于域名没试过</p>
+<p>⑤、然后用CSR 去创建SSL 证书:</p>
+<pre><code>openssl x509 -req -in C:\CA\MyServer.req -out C:\CA\MyServer.cer -CAkey C:\CA\MyCa.key -CA C:\CA\MyCa.cer -days 36500 -CAcreateserial -CAserial  C:\CA\MyServer.serial</code></pre><p>⑥、将.key 和.cer 文件导出为.p12 证书：    </p>
+<pre><code>openssl pkcs12 -export -in C:\Ca\MyServer.cer -inkey C:\CA\MyServer.key -out C:\CA\MyServer.p12  -name &quot;MyServer&quot;</code></pre><p>在这里需要输入密码和再次输入密码   不要担心没输进去  光标没动其实是输进去了的  假设密码为123456</p>
+<p>⑦、将.p12 文件导入到java keystore 中：</p>
+<pre><code>keytool -importkeystore -v -srckeystore  C:\CA\MyServer.p12 -srcstoretype pkcs12 -srcstorepass 123456 -destkeystore C:\CA\MyServer.keystore -deststoretype jks -deststorepass 123456</code></pre><p>这里srcstorepass后面的123456为MyServer.p12的密码deststorepass后的123456为keyStore的密码</p>
+<p>⑧我们可以使用SSL证书了,<br>把我们得到的keystore文件放到tomcat下面的文件夹里面，随意放，例如conf文件夹</p>
+<p>然后修改server.xml:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;Connectorport=<span class="string">"8443"</span>protocol=<span class="string">"org.apache.coyote.http11.Http11Protocol"</span>  SSLEnabled=<span class="string">"true"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">maxThreads=<span class="string">"150"</span>scheme=<span class="string">"https"</span>secure=<span class="string">"true"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">keystoreFile=<span class="string">"C:/apache-tomcat-6.4.4/bin/conf/MyServer.keystore"</span> keystorePass=<span class="string">"123456"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">clientAuth=<span class="string">"false"</span>sslProtocol=<span class="string">"TLS"</span> /&gt;</span></pre></td></tr></table></figure>
+
+
+<p>最后在启动tomcat。然后访问<a href="https://localhost:8443/" target="_blank" rel="noopener">https://localhost:8443/</a>  或者把localhost换成自己的iP。如果能正常访问则配置成功。如遇浏览器证书阻挡，点击继续浏览。能看到欢迎页面也算成功！</p>
+<p>⑨、把CA文件夹下面的MyCa证书放到我们自己的web工程里面（假设我的工程为helloWord）</p>
+<p>⑩、把plist文件和IPA也放在web工程下面（IPA不要求HTTPs）</p>
+<p>在网页上给出两个链接</p>
+<p>1、此链接直接连接到MyCa.cer  例如 https：//localhost:8443/helloword/CA/MyCa.cer</p>
+<p>2、此链接为Plist文件的链接  参照方案（一）即可  比如</p>
+<p>itms-services://?action=download-manifest&amp;url=</p>
+<p>https：//localhost:8443/helloword//xxx.plist</p>
+<h4 id="ios设备安装"><a href="#ios设备安装" class="headerlink" title="ios设备安装"></a>ios设备安装</h4><blockquote>
+<p>必须要点击第一个链接来安装证书，安装证书后即可点击第二个链接来安装软件。<br>自签名的证书有这个限制，要使我们的设备相信此软件得安装此证书。我们可以买一个证书来代替自签名的证书。这样就免除安装证书步骤！</p>
+</blockquote>
+<p>如果不出现无法连接自己的IP或者证书无效这些警告，恭喜你就成功了！</p>
 
       
     </div>
@@ -384,7 +422,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://hcoder.cn/2019/12/10/back/" title="Blog回归">http://hcoder.cn/2019/12/10/back/</a>
+    <a href="http://hcoder.cn/2014/06/30/Ios%207.1-enterprise-solution(2)/" title="IOS企业级开发APP分发问题（2）">http://hcoder.cn/2014/06/30/Ios%207.1-enterprise-solution(2)/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -399,7 +437,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag"># 生活</a>
+            <a href="/tags/IOS/" rel="tag"># IOS</a>
           
         </div>
       
@@ -412,8 +450,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/11/nativeBridge/" rel="next" title="React Native与原生的通信">
-                <i class="fa fa-chevron-left"></i> React Native与原生的通信
+              <a href="/2014/06/24/Ios%207.1-enterprise-solution/" rel="next" title="IOS企业级开发APP分发问题">
+                <i class="fa fa-chevron-left"></i> IOS企业级开发APP分发问题
               </a>
             
           </div>
@@ -421,6 +459,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/15/objc_runtime/" rel="prev" title="objective-c runtime机制">
+                objective-c runtime机制 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -475,8 +517,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -564,6 +615,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#制作所需要的证书"><span class="nav-number">2.</span> <span class="nav-text">制作所需要的证书</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ios设备安装"><span class="nav-number">3.</span> <span class="nav-text">ios设备安装</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
